@@ -17,7 +17,7 @@
         <div class="container">
             <h1><a href="index.php">Suitstyle</a></h1>
             <ul>
-                <li><a href="produk.php">Produk</a></li>
+                <li><a href="produk.php">Produk Terlaris</a></li>
             </ul>
         </div>
     </header>
