@@ -1,0 +1,54 @@
+/* Import Google Font Inknut Antiqua */
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap');
+
+/* Atur tampilan body */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Tinggi layar penuh */
+    background-color: #f4f4f4;
+    font-family: 'Inknut Antiqua', serif;
+}
+
+/* Container untuk splash screen */
+.splash {
+    text-align: center;
+    position: relative;
+}
+
+/* Gambar splash */
+.splash img {
+    width: 100%; /* Gambar memenuhi lebar layar */
+    height: 100vh; /* Gambar memenuhi tinggi layar */
+    object-fit: cover; /* Gambar tidak terdistorsi */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Teks "Suitstyle" */
+.splash h1 {
+    position: relative;
+    font-size: 4rem;
+    color: rgb(243, 109, 191);
+    z-index: 1;
+    margin: 0;
+}
+
+/* Efek animasi fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.splash {
+    animation: fadeIn 1.5s ease-in-out;
+}

@@ -1,106 +1,46 @@
-<?php
-
-// Periksa apakah pengguna sudah melihat splash screen
-if (!isset($_COOKIE['visited'])) {
-    setcookie('visited', 'true', time() + 3600, '/'); // Cookie berlaku 1 jam
-    header("Location: splash.php");
-    exit;
-}
-
-
-    include 'db.php';
-    $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");
-    $a = mysqli_fetch_object($kontak);
-?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Suitestyle</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splash Screen</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/splash.css">
+
+  
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f1a3bc; /* Background color */
+    }
+
+    .splash-screen {
+      text-align: center;
+    }
+
+    .splash-logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1><a href="index.php">Suitstyle</a></h1>
-            <ul>
-                <li><a href="produk.php">Produk</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- search -->
-    <div class="search">
-        <div>
-            <form action="produk.php">
-                <input type="text" name="search" placeholder="Cari Produk">
-                <input type="submit" name="cari" value="Cari Produk">
-            </form>
-        </div>
-    </div>
-
-    <!-- kategori -->
-    <div class="section">
-        <div class="container">
-            <h3>Kategori</h3>
-            <div class="box">
-                    <?php 
-                        $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori ORDER BY kategori_id DESC");
-                        if(mysqli_num_rows($kategori) > 0){
-                            while($k = mysqli_fetch_array($kategori)){
-                    ?>
-                        <a href="produk.php?kategori=<?php echo $k['kategori_id'] ?>">
-                            <div class="col-3">
-                                <img src="img/icon1.jpg" width="50px" style="margin-bottom: 5px;">
-                                <p><?php echo $k['kategori_nama'] ?></p>
-                            </div>
-                        </a>
-                        <?php }}else{ ?>
-                            <p>Kategori tidak ada</p>
-                        <?php } ?>
-            </div>
-        </div>
-    </div>
-
-    <!-- new product -->
-    <div class="section">
-        <div class="container">
-            <h3>Produk Terbaru</h3>
-            <div class="box">
-                    <?php
-                        $produk = mysqli_query($conn, "SELECT * FROM tb_produk ORDER BY produk_id DESC LIMIT 8");
-                        if (mysqli_num_rows($produk) > 0) {
-                            while($p = mysqli_fetch_array($produk)){
-                    ?>
-                        <a href="detail-produk.php?id=<?php echo $p['produk_id'] ?>">
-                        <div class="col-7">
-                            <img src="produk/<?php echo $p['produk_image'] ?>">
-                            <p class="nama"><?php echo substr($p['produk_nama'], 0, 30) ?></p>
-                            <p class="harga">Rp. <?php echo number_format($p['produk_price']) ?></p>
-                        </div>
-                        </a>
-                    <?php }}else{ ?>
-                        <p>Produk tidak ada</p>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- footer -->
-        <div class="footer">
-            <div class="container">
-                <h4>Alamat</h4>
-                <p><?php echo $a->admin_address ?></p>
-
-                <h4>Email</h4>
-                <p><?php echo $a->admin_email ?></p>
-
-                <h4>No. Hp</h4>
-                <p><?php echo $a->admin_telp ?></p>
-                <small>Copyright &copy; 2024 - Suitestyle.</small>
-            </div>
-        </div>
+  <div class="splash-screen">
+    <!-- Logo -->
+    <img src="img/Loading.png" alt="Logo" class="splash-logo">
+    <!-- Teks -->
+    <p class="splash-text">Selamat Datang di Website Kami</p>
+    <script>
+    // Menghubungkan ke halaman home selama 3 detik
+    setTimeout(function() {
+      window.location.href = "home.php"; 
+    }, 3000);
+  </script>
+  </div>
 </body>
 </html>
