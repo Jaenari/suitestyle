@@ -41,6 +41,24 @@ a {
 	border: none;
 	cursor: pointer;
 }
+header {
+	background-color: #eda3cd;
+	color: #fff;
+}
+header h1 {
+	float: left;
+	padding:10px 0;
+}
+header ul {
+	float: right;
+}
+header ul li {
+	display: inline-block;
+}
+header ul li a {
+	padding:20px 0 20px 15px;
+	display: inline-block;
+}
 footer {
 	padding:25px 0;
 }

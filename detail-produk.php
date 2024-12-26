@@ -6,6 +6,8 @@
     $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id = '".$_GET['id']."' ");
     $p = mysqli_fetch_object($produk);
 ?>
+<?php include "navbar.php"; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,28 +15,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1><a href="index.php">Suitstyle</a></h1>
-            <ul>
-                <li><a href="produk.php">Produk</a></li>
-            </ul>
-        </div>
-    </header>
 
-    <!-- search -->
-    <div class="search">
-        <div>
-            <form action="produk.php">
-                <input type="text" name="search" placeholder="Cari Produk" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                <input type="hidden" name="kategori" value="<?php echo isset($_GET['kategori']) ? $_GET['kategori'] : ''; ?>">
-                <input type="submit" name="cari" value="Cari Produk">
-            </form>
-        </div>
-    </div>
+
 
     <!-- produk detail -->
     <div class="section">
