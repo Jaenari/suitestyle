@@ -1,4 +1,13 @@
 <?php
+
+// Periksa apakah pengguna sudah melihat splash screen
+if (!isset($_COOKIE['visited'])) {
+    setcookie('visited', 'true', time() + 3600, '/'); // Cookie berlaku 1 jam
+    header("Location: splash.php");
+    exit;
+}
+
+
     include 'db.php';
     $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");
     $a = mysqli_fetch_object($kontak);

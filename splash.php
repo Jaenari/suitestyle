@@ -1,5 +1,5 @@
 <?php
-// Set delay waktu splash screen (3 detik)
+// Set delay waktu splash screen (7 detik)
 header("Refresh: 7; url=index.php");
 ?>
 <!DOCTYPE html>
@@ -15,31 +15,43 @@ header("Refresh: 7; url=index.php");
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            height: 100vh; /* Tinggi layar penuh */
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
         }
-        .splash {
-            text-align: center;
-        }
-        .splash h1 {
-            font-size: 3rem;
-            color: #d91e18;
-        }
+
         .splash img {
-            max-width: 150px;
-            margin-bottom: 20px;
+            width: 100%; /* Gambar memenuhi lebar layar */
+            height: 50vh; /* Gambar memenuhi tinggi layar */
+            object-fit: cover; /* Gambar tidak terdistorsi */
         }
-        .splash p {
-            font-size: 1.2rem;
-            color: #333;
+
+        .splash h1 {
+            position: absolute; /* Supaya teks di atas gambar */
+            font-size: 3rem;
+            color: rgb(243, 109, 191);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .splash {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .text-center{
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="splash">
-        <img src="img/Loading.png" alt="Logo">
-        <h1>Suitstyle</h1>
+        <img src="img/Loading.png" alt="Splash Image">
+        <h1 class="text-center">Suitstyle</h1>
     </div>
 </body>
 </html>
