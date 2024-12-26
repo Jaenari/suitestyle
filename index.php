@@ -42,7 +42,7 @@
                         if(mysqli_num_rows($kategori) > 0){
                             while($k = mysqli_fetch_array($kategori)){
                     ?>
-                        <a href="produk.php?kat=<?php echo $k['kategori_id'] ?>">
+                        <a href="produk.php?kategori=<?php echo $k['kategori_id'] ?>">
                             <div class="col-3">
                                 <img src="img/icon1.jpg" width="50px" style="margin-bottom: 5px;">
                                 <p><?php echo $k['kategori_nama'] ?></p>

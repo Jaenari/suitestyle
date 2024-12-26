@@ -1,5 +1,4 @@
 <?php
-    error_reporting(0);
     include 'db.php';
     $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");
     $a = mysqli_fetch_object($kontak);
@@ -30,8 +29,8 @@
     <div class="search">
         <div>
             <form action="produk.php">
-                <input type="text" name="search" placeholder="Cari Produk" value="<?php echo $_GET['search'] ?>">
-                <input type="hidden" name="kat" value="<?php echo $_GET['kat'] ?>">
+                <input type="text" name="search" placeholder="Cari Produk" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                <input type="hidden" name="kategori" value="<?php echo isset($_GET['kategori']) ? $_GET['kategori'] : ''; ?>">
                 <input type="submit" name="cari" value="Cari Produk">
             </form>
         </div>
@@ -43,17 +42,17 @@
             <h3>Detail Produk</h3>
             <div class="box">
                 <div class="col-2">
-                    <img src="produk/<?php echo $p->produk_image ?>" width="100%">
+                    <img src="produk/<?php echo htmlspecialchars($p->produk_image); ?>" width="100%">
                 </div>
                 <div class="col-2">
-                    <h3><?php echo $p->produk_nama ?></h3>
-                    <h4>Rp. <?php echo number_format($p->produk_price) ?></h4>
+                    <h3><?php echo htmlspecialchars($p->produk_nama); ?></h3>
+                    <h4>Rp. <?php echo number_format($p->produk_price); ?></h4>
                     <p>Deskripsi :<br>
-                        <?php echo $p->produk_deskripsi ?>
+                        <?php echo nl2br(htmlspecialchars($p->produk_deskripsi)); ?>
                     </p>
-                    <p><a href="https://api.whatsapp.com/send?phone=<?php echo $a->admin_telp ?>&text=Hai, saya iangin membeli produk anda." target="_blank">
+                    <p><a href="https://api.whatsapp.com/send?phone=<?php echo htmlspecialchars($a->admin_telp); ?>&text=Hai, saya ingin membeli produk anda." target="_blank">
                         Hubungi Via Whatsapp
-                        <img src="img/wa.jpeg"width="50px"></a></p>
+                        <img src="img/wa.jpeg" width="50px"></a></p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 <?php
-    error_reporting(0);
     include 'db.php';
     $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");
     $a = mysqli_fetch_object($kontak);
@@ -26,9 +25,9 @@
     <!-- search -->
     <div class="search">
         <div>
-            <form action="produk.php">
-                <input type="text" name="search" placeholder="Cari Produk" value="<?php echo $_GET['search'] ?>">
-                <input type="hidden" name="kat" value="<?php echo $_GET['kat'] ?>">
+            <form action="produk.php" method="GET">
+                <input type="text" name="search" placeholder="Cari Produk" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                <input type="hidden" name="kategori" value="<?php echo isset($_GET['kategori']) ? $_GET['kategori'] : ''; ?>">
                 <input type="submit" name="cari" value="Cari Produk">
             </form>
         </div>
@@ -39,27 +38,44 @@
         <div class="container">
             <h3>Produk</h3>
             <div class="box">
-                    <?php
-                        if($_GET['search'] != '' || $_GET['kat'] != ''){
-                            $where = "AND produk_nama LIKE '%".$_GET['search']."%' AND kategoti_id LIKE '%".$_GET['kat']."%' ";
-                        }
-                        $produk = mysqli_query($conn, "SELECT * FROM tb_produk $where ORDER BY produk_id DESC");
-                        if (mysqli_num_rows($produk) > 0) {
-                            while($p = mysqli_fetch_array($produk)){
-                    ?>
+                <?php
+                // Inisialisasi variabel where
+                $where = "1";
+
+                // Periksa apakah parameter search atau kategori di-set
+                if (!empty($_GET['search']) || !empty($_GET['kategori'])) {
+                    $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+                    $kategori = isset($_GET['kategori']) ? mysqli_real_escape_string($conn, $_GET['kategori']) : '';
+                    $where = "produk_nama LIKE '%$search%' AND kategori_id LIKE '%$kategori%'";
+                }
+
+                // Query produk
+
+                $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE $where ORDER BY produk_id DESC");
+
+
+                // Periksa hasil query
+                if ($produk && mysqli_num_rows($produk) > 0) {
+                    while ($p = mysqli_fetch_array($produk)) {
+                ?>
                         <a href="detail-produk.php?id=<?php echo $p['produk_id'] ?>">
-                        <div class="col-7">
-                            <img src="produk/<?php echo $p['produk_image'] ?>">
-                            <p class="nama"><?php echo substr($p['produk_nama'], 0, 30) ?></p>
-                            <p class="harga">Rp. <?php echo number_format($p['produk_price']) ?></p>
-                        </div>
+                            <div class="col-7">
+                                <img src="produk/<?php echo $p['produk_image'] ?>" alt="<?php echo htmlspecialchars($p['produk_nama']) ?>">
+                                <p class="nama"><?php echo substr(htmlspecialchars($p['produk_nama']), 0, 30) ?></p>
+                                <p class="harga">Rp. <?php echo number_format($p['produk_price']) ?></p>
+                            </div>
                         </a>
-                    <?php }}else{ ?>
-                        <p>Produk tidak ada</p>
-                    <?php } ?>
-                </div>
+                <?php
+                    }
+                } else {
+                ?>
+                    <p>Produk tidak ada</p>
+                <?php
+                }
+                ?>
             </div>
         </div>
+    </div>
 
         <!-- footer -->
         <div class="footer">

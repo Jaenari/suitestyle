@@ -42,7 +42,6 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
                             <th>Nama Produk</th>
                             <th>Harga</th>
                             <th>Warna</th>
-                            <th>Deskripsi</th>
                             <th>Gambar</th>
                             <th width="150px">Aksi</th>
                         </tr>
