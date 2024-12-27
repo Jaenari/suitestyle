@@ -6,6 +6,16 @@
     margin-top: 20px;
 }
 
+.product-grid a {
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: inherit; /* Warna teks mengikuti elemen induk */
+}
+
+.product-grid a:hover {
+    color: #000; /* Opsional: Warna teks saat di-hover */
+    text-decoration: none; /* Pastikan tidak ada garis bawah saat di-hover */
+}
+
 /* Card Produk */
 .card {
     background: #fff;
@@ -24,8 +34,8 @@
 
 /* Gambar Produk */
 .card-image {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    aspect-ratio: 4/3; /* Menentukan rasio aspek gambar (4:3) */
     object-fit: cover;
     border-bottom: 1px solid #ddd;
 }
@@ -54,12 +64,6 @@
     font-weight: bold;
 }
 
-/* Sidebar Responsiveness */
-.sidebar {
-    /* Sama seperti sebelumnya */
-}
-
-/* Tombol Sidebar */
-.hamburger {
-    /* Sama seperti sebelumnya */
+.txt{
+    text-decoration: none;
 }

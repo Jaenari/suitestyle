@@ -110,6 +110,80 @@ $a = mysqli_fetch_object($kontak);
 
     <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
 
+<style>
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffc0cb; /* Warna pink */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h3 {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: #ff91a4;
+    border-radius: 4px;
+}
+
+/* Close Button */
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Hamburger Button */
+.hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff91a4;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.hamburger:hover {
+    color: #ff5672;
+}
+</style>
+
     <script>
     function toggleSidebar() {
         const sidebar = document.getElementById('sidebar');

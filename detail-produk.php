@@ -99,7 +99,7 @@ $p = mysqli_fetch_object($produk);
     <div class="section">
         <div class="container">
             <h3>Detail Produk</h3>
-            <div class="product-detail-box">
+            <div class="product-detail-box mb-4">
                 <!-- Kolom Gambar Produk -->
                 <div class="product-image">
                     <img src="produk/<?php echo htmlspecialchars($p->produk_image); ?>" alt="<?php echo htmlspecialchars($p->produk_nama); ?>">
@@ -111,7 +111,8 @@ $p = mysqli_fetch_object($produk);
                     <h4>Rp. <?php echo number_format($p->produk_price); ?></h4>
                     <div class="product-description">
                         <h3>Deskripsi Produk</h3>
-                        <p><?php echo nl2br(htmlspecialchars($p->produk_deskripsi)); ?></p>
+                        <p><?php echo nl2br(htmlspecialchars($p->produk_deskripsi)); ?><h2 class="mt-2">Warna</h2>
+                        <h4><?php echo htmlspecialchars($p->warna); ?></h4></p>
                     </div>
 
                     <!-- Tombol Aksi -->
