@@ -45,18 +45,7 @@
     </div>
 
         <!-- footer -->
-        <div class="footer">
-            <div class="container">
-                <h4>Alamat</h4>
-                <p><?php echo $a->admin_address ?></p>
-
-                <h4>Email</h4>
-                <p><?php echo $a->admin_email ?></p>
-
-                <h4>No. Hp</h4>
-                <p><?php echo $a->admin_telp ?></p>
-                <small>Copyright &copy; 2024 - Suitestyle.</small>
-            </div>
-        </div>
+        <?php include "footer.php";?>
+        
 </body>
 </html>
