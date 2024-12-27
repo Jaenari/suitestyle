@@ -24,7 +24,7 @@
     }
 
     .splash-logo {
-      max-width: 150px;
+      max-width: 250px;
       margin-bottom: 20px;
     }
   </style>
@@ -34,7 +34,7 @@
     <!-- Logo -->
     <img src="img/Loading.png" alt="Logo" class="splash-logo">
     <!-- Teks -->
-    <p class="splash-text">Selamat Datang di Website Kami</p>
+    <p class="splash-text">Suitestyle</p>
     <script>
     // Menghubungkan ke halaman home selama 3 detik
     setTimeout(function() {
