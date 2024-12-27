@@ -32,27 +32,44 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
         <div class="container">
             <h3>Tambah Data Kategori</h3>
             <div class="box">
-                <form action="" method="POST">
-                    <input type="text" name="kategori_nama" placeholder="Nama Kategori" class="input-control" required>
-                    <input type="submit" name="submit" value="Submit" class="btn">
-                </form>
-                <?php
-                    if (isset($_POST['submit'])) {
-                    // Ambil data dari form
-                    $nama = ucwords($_POST['kategori_nama']);
+            <form action="" method="POST" enctype="multipart/form-data">
+    <input type="text" name="kategori_nama" placeholder="Nama Kategori" class="input-control" required>
+    <label>Upload Foto</label>
+    <input type="file" name="foto" class="input-control" required>
+    <input type="submit" name="submit" value="Submit" class="btn">
+</form>
 
-                    // Query untuk insert data tanpa kolom warna
-                    $insert = mysqli_query($conn, "INSERT INTO tb_kategori (kategori_nama) VALUES ('".$nama."')");
+                    <?php
+if (isset($_POST['submit'])) {
+    $nama = $_POST['kategori_nama']; // Pastikan sesuai dengan name di form
+    $filename = $_FILES['foto']['name'];
+    $tmp_name = $_FILES['foto']['tmp_name'];
 
-                    // Cek apakah berhasil  
-                    if ($insert) {
-                        echo '<script>alert("Berhasil menambahkan kategori!");</script>';
-                        echo '<script>window.location="data-kategori.php";</script>';
-                    } else {
-                        echo 'Gagal: ' . mysqli_error($conn);
-                    }
-                }
-                ?>
+    // Validasi apakah file telah diunggah
+    if ($filename != '') {
+        // Lokasi penyimpanan gambar
+        $path = 'kategori/' . $filename;
+
+        // Pindahkan file ke folder
+        if (move_uploaded_file($tmp_name, $path)) {
+            // Query untuk insert data
+            $insert = mysqli_query($conn, "INSERT INTO tb_kategori (kategori_nama, foto) VALUES ('$nama', '$filename')");
+
+            if ($insert) {
+                echo '<script>alert("Data berhasil disimpan")</script>';
+                echo '<script>window.location="data-kategori.php"</script>';
+            } else {
+                echo 'Gagal menyimpan ke database: ' . mysqli_error($conn);
+            }
+        } else {
+            echo '<script>alert("Gagal mengunggah file")</script>';
+        }
+    } else {
+        echo '<script>alert("File foto wajib diunggah!")</script>';
+    }
+}
+?>
+
 
             </div>
         </div>

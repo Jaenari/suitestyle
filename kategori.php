@@ -51,7 +51,7 @@ $a = mysqli_fetch_object($kontak);
         }
         .card img {
             width: 100%;
-            height: 150px;
+            height: 250px;
             object-fit: cover;
         }
         .card p {
@@ -77,12 +77,12 @@ $a = mysqli_fetch_object($kontak);
             if (mysqli_num_rows($kategori) > 0) {
                 while ($k = mysqli_fetch_array($kategori)) {
             ?>
-            <a href="produk.php?kategori=<?php echo $k['kategori_id'] ?>">
-                <div class="card">
-                    <img src="img/icon1.jpg" alt="Kategori">
-                    <p><?php echo $k['kategori_nama'] ?></p>
-                </div>
-            </a>
+           <a href="produk.php?kategori=<?php echo $k['kategori_id'] ?>">
+    <div class="card">
+        <img src="kategori/<?php echo $k['foto']; ?>" alt="<?php echo $k['kategori_nama']; ?>">
+        <p><?php echo $k['kategori_nama']; ?></p>
+    </div>
+</a>
             <?php }} else { ?>
                 <p>Kategori tidak ada</p>
             <?php } ?>

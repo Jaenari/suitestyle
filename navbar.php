@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar fixed-top">
     <div class="logo">
         <img src="img/Loading.png" alt="Logo" class="logo-img">
     </div>
