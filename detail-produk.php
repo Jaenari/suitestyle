@@ -1,5 +1,11 @@
 <?php
 include 'db.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    die("Error: User ID tidak ditemukan di session. Pastikan Anda login.");
+}
+
+
 
 // Ambil informasi kontak admin
 $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");
@@ -121,7 +127,9 @@ $p = mysqli_fetch_object($produk);
                            class="btn btn-whatsapp" target="_blank">
                             <img src="img/wa.jpeg" alt="Whatsapp" width="20px"> Hubungi via WhatsApp
                         </a>
+                        <a href="checkout.php">
                         <button class="btn btn-add-cart">Masukkan ke Keranjang</button>
+                        </a>
                     </div>
                 </div>
             </div>
