@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login | Suitestyle</title>
-	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<link rel="stylesheet" type="text/css" href="../css/admin.css">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body id="bg-login">
@@ -19,7 +19,7 @@
 		<?php
 			if (isset($_POST['submit'])) {
 				session_start();
-				include 'db.php';
+				include '../db.php';
 
 				$user = mysqli_real_escape_string($conn, $_POST['user']);
 				$pass = mysqli_real_escape_string($conn, $_POST['pass']);
