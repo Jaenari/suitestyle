@@ -15,7 +15,7 @@
                 <input type="hidden" name="kategori" value="<?php echo isset($_GET['kategori']) ? $_GET['kategori'] : ''; ?>">
             </form>
         </div>
-        <a href="#"><i class="user-icon">👤</i></a>
+        <a href="register.php"><i class="user-icon">👤</i></a>
         <a href="#"><i class="cart-icon">🛒</i></a>
     </div>
 </nav>

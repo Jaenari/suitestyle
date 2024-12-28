@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
         echo '<script>window.location="login.php"</script>';
     }
@@ -18,7 +18,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -53,7 +53,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
                     <input type="text" name="harga" class="input-control" placeholder="Harga" value="<?php echo $p->produk_price ?>" required>
                     <input type="text" name="warna" class="input-control" placeholder="Warna" value="<?php echo $p->warna ?>" required>
                     <textarea name="produk_deskripsi" id="produk_deskripsi" cols="30" rows="10" class="input-control" placeholder="<?php echo $p->produk_deskripsi ?>"></textarea>
-                    <img src="produk/<?php echo $p->produk_image ?>" width="100px">
+                    <img src="../produk/<?php echo $p->produk_image ?>" width="100px">
                     <input type="hidden" name="foto" value="<?php echo $p->produk_image ?>">
                     <input type="file" name="gambar" class="input-control">
                     <input type="submit" name="submit" value="Submit" class="btn">
@@ -89,8 +89,8 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
                             // jika format file tidak ada di dalam tipe diizinkan
                             echo '<script>alert("Format file tidak diizinkan")</script>';
                             }else{
-                                unlink('./produk/'.$foto);
-                                move_uploaded_file($tmp_name, './produk/'.$newname);
+                                unlink('../produk/'.$foto);
+                                move_uploaded_file($tmp_name, '../produk/'.$newname);
                                 $namagambar = $newname;
 
                             }

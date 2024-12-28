@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     echo '<script>window.location="login.php"</script>';
     exit;
@@ -13,7 +13,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -53,7 +53,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
         <tr>
             <td><?php echo $no++ ?></td>
             <td><?php echo $row['kategori_nama'] ?></td>
-            <td><img src="kategori/<?php echo $row['foto'] ?>" width="100"></td>
+            <td><img src="../kategori/<?php echo $row['foto'] ?>" width="100"></td>
             <td>
                 <a href="edit-kategori.php?id=<?php echo $row['kategori_id'] ?>">Edit</a> || 
                 <a href="proses-hapus.php?idk=<?php echo $row['kategori_id'] ?>" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     echo '<script>window.location="login.php"</script>';
     exit;
@@ -20,7 +20,7 @@ $k = mysqli_fetch_object($kategori);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -45,7 +45,7 @@ $k = mysqli_fetch_object($kategori);
                     <input type="text" name="kategori_nama" placeholder="Nama Kategori" class="input-control" value="<?php echo $k->kategori_nama ?>" required>
                     
                     <label>Foto Saat Ini</label>
-                    <img src="kategori/<?php echo $k->foto ?>" width="100">
+                    <img src="../kategori/<?php echo $k->foto ?>" width="100">
                     
                     <label>Ganti Foto</label>
                     <input type="file" name="foto" class="input-control">
@@ -59,11 +59,11 @@ $k = mysqli_fetch_object($kategori);
                     $tmp_name = $_FILES['foto']['tmp_name'];
 
                     if ($filename != '') {
-                        $path = 'kategori/' . $filename;
+                        $path = '../kategori/' . $filename;
 
                         // Hapus foto lama
-                        if (file_exists('kategori/' . $k->kategori_foto)) {
-                            unlink('kategori/' . $k->kategori_foto);
+                        if (file_exists('../kategori/' . $k->kategori_foto)) {
+                            unlink('../kategori/' . $k->kategori_foto);
                         }
 
                         // Pindahkan foto baru ke folder

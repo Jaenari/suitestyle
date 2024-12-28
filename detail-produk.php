@@ -1,8 +1,8 @@
 <?php
 include 'db.php';
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    die("Error: User ID tidak ditemukan di session. Pastikan Anda login.");
+if (!isset($_SESSION['produk_id'])) {
+    echo "<script>alert('Login Dulu Bang!'); window.location='login-u.php?id=" . urlencode($produk_id) . "';</script>";
 }
 
 

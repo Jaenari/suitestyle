@@ -1,3 +1,15 @@
+<?php
+
+// Tangkap parameter 'produk_id' dari URL
+if (!isset($_GET['produk_id']) || empty($_GET['produk_id'])) {
+    echo "<script>alert('Produk ID tidak ditemukan!'); window.location='produk.php';</script>";
+    exit;
+}
+$produk_id = $_GET['produk_id'];
+
+$produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE $where ORDER BY produk_id DESC");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +43,7 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
+            <input type="hidden" name="produk_id" value="<?php echo htmlspecialchars($produk_id); ?>">
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
     </div>

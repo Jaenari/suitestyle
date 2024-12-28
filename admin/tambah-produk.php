@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
         echo '<script>window.location="login.php"</script>';
     }
@@ -12,7 +12,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
                         }else{
                             // jika format file sesuai dengan yang ada di dalam array tipe diizinkan
                             // proses upload file sekaligus insert ke database
-                            move_uploaded_file($tmp_name, './produk/'.$newname);
+                            move_uploaded_file($tmp_name, '../produk/'.$newname);
 
 
                             $insert = mysqli_query($conn, "INSERT INTO tb_produk VALUES (

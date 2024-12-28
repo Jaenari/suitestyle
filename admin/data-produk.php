@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     echo '<script>window.location="login.php"</script>';
     exit;
@@ -13,7 +13,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -60,7 +60,7 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
                             <td><?php echo $row['produk_nama'] ?></td>
                             <td>Rp. <?php echo number_format($row['produk_price']) ?></td>
                             <td><?php echo $row['warna'] ?></td>
-                            <td><a href="produk/<?php echo $row['produk_image'] ?>" target="_blank"> <img src="produk/<?php echo $row['produk_image'] ?>" width="50px"> </a></td>
+                            <td><a href="../produk/<?php echo $row['produk_image'] ?>" target="_blank"> <img src="../produk/<?php echo $row['produk_image'] ?>" width="50px"> </a></td>
                             <td>
                                 <a href="edit-produk.php?id=<?php echo $row['produk_id'] ?>">Edit</a> || <a href="proses-hapus.php?idp=<?php echo $row['produk_id'] ?>"onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
                             </td>
