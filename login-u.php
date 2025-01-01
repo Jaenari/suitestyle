@@ -1,5 +1,5 @@
 <?php
-
+include_once 'db.php';
 // Tangkap parameter 'produk_id' dari URL
 if (!isset($_GET['produk_id']) || empty($_GET['produk_id'])) {
     echo "<script>alert('Produk ID tidak ditemukan!'); window.location='produk.php';</script>";
@@ -7,7 +7,7 @@ if (!isset($_GET['produk_id']) || empty($_GET['produk_id'])) {
 }
 $produk_id = $_GET['produk_id'];
 
-$produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE $where ORDER BY produk_id DESC");
+$produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id=$produk_id ORDER BY produk_id DESC");
 
 ?>
 <!DOCTYPE html>

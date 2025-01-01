@@ -127,8 +127,9 @@ $p = mysqli_fetch_object($produk);
                            class="btn btn-whatsapp" target="_blank">
                             <img src="img/wa.jpeg" alt="Whatsapp" width="20px"> Hubungi via WhatsApp
                         </a>
-                        <a href="checkout.php">
-                        <button class="btn btn-add-cart">Masukkan ke Keranjang</button>
+                        <a href="checkout.php?produk_id=<?php echo urlencode($p->produk_id); ?>" class="btn btn-add-cart">
+
+                        <button class="btn btn-add-cart">Checkout</button>
                         </a>
                     </div>
                 </div>
