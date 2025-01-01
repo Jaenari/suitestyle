@@ -2,7 +2,7 @@
 include 'db.php';
 session_start();
 if (!isset($_SESSION['produk_id'])) {
-    echo "<script>alert('Login Dulu Bang!'); window.location='login-u.php?id=" . urlencode($produk_id) . "';</script>";
+    echo "<script>alert('Login Dulu yaa'); window.location='login-u.php?id=" . urlencode($produk_id) . "';</script>";
 }
 
 
