@@ -16,7 +16,38 @@
             </form>
         </div>
         <a href="register.php"><i class="user-icon">👤</i></a>
-        <a href="#"><i class="cart-icon">🛒</i></a>
+        <a href="checkout.php" class="cart-container">
+    <i class="cart-icon">🛒</i>
+    <span class="cart-badge">
+        <?php
+        // Tampilkan jumlah barang di badge
+        echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+        ?>
+    </span>
+</a>
     </div>
 </nav>
+
+<style>
+    .cart-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+}
+
+</style>
 
