@@ -5,6 +5,7 @@
 	//$password = ""; 
 	//$dbname = "suitestyle";
 
+	
 	// Matikan tanda "//" kalo mau nyalain cyberpanel
 	$hostname = "localhost";
 	$username = "suit_id";
