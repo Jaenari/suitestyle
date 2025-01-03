@@ -1,11 +1,9 @@
 <?php
 include 'db.php';
 session_start();
-if (!isset($_SESSION['produk_id'])) {
-    echo "<script>alert('Login Dulu yaa'); window.location='login-u.php?id=" . urlencode($produk_id) . "';</script>";
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>alert('Login Dulu yaa'); window.location='login-u.php?id=" . urlencode($_GET['id']) . "';</script>";
 }
-
-
 
 // Ambil informasi kontak admin
 $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");

@@ -48,17 +48,32 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         <!-- Informasi Produk -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title">Detail Produk</h4>
-                <p><strong>Nama Produk:</strong> <?php echo htmlspecialchars($produk['produk_nama']); ?></p>
-                <p><strong>Harga:</strong> Rp. <?php echo number_format($produk['produk_price']); ?></p>
-                <p><strong>Deskripsi:</strong> <?php echo nl2br(htmlspecialchars($produk['produk_deskripsi'])); ?></p>
+                <div class="row">
+                    <!-- Gambar Produk -->
+                    <div class="col-md-4 text-center">
+                        <strong>Foto Produk:</strong>
+                        <br>
+                        <img src="produk/<?php echo htmlspecialchars($produk['produk_image']); ?>" alt="Foto Produk"
+                            class="img-thumbnail" style="max-width: 100%; height: auto;">
+                    </div>
+
+                    <!-- Detail Produk -->
+                    <div class="col-md-8">
+                        <h4 class="card-title">Detail Produk</h4>
+                        <p><strong>Nama Produk:</strong> <?php echo htmlspecialchars($produk['produk_nama']); ?></p>
+                        <p><strong>Harga:</strong> Rp. <?php echo number_format($produk['produk_price']); ?></p>
+                        <p><strong>Deskripsi:</strong>
+                            <?php echo nl2br(htmlspecialchars($produk['produk_deskripsi'])); ?></p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Form Alamat -->
         <form action="" method="GET" onsubmit="redirectToWhatsApp(event)">
             <label for="address">Alamat:</label>
-            <input type="text" id="address" name="address" class="form-control mb-3" required placeholder="Masukkan alamat Anda">
+            <input type="text" id="address" name="address" class="form-control mb-3" required
+                placeholder="Masukkan alamat Anda">
             <input type="submit" value="Kirim ke WhatsApp" class="btn btn-success">
         </form>
 
@@ -76,6 +91,7 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
             </div>
         <?php } ?>
     </div>
+
 </body>
 
 <script>
@@ -91,10 +107,11 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         const harga = "<?php echo htmlspecialchars($produk['produk_price']); ?>";
         const deskripsi = "<?php echo htmlspecialchars($produk['produk_deskripsi']); ?>";
 
+
         // Encode pesan agar sesuai dengan format URL
         const message = `Hai, saya ingin membeli produk ${produkNama}. \n
                          ${deskripsi} \n
-                         Dengan Harga ${harga}. \n
+                         Dengan Harga Rp. ${harga}. \n
                          Mohon dikirim ke Alamat saya: ${address}`;
         const encodedMessage = encodeURIComponent(message);
 
