@@ -1,11 +1,11 @@
 <?php
 	// Matikan tanda "//" kalo mau nyalain localhost xammp
-	//$hostname = "localhost";
-	//$username = "root";
-	//$password = ""; 
-	//$dbname = "suitestyle";
+	// $hostname = "localhost";
+	// $username = "root";
+	// $password = ""; 
+	// $dbname = "suitestyle";
 
-	
+
 	// Matikan tanda "//" kalo mau nyalain cyberpanel
 	$hostname = "localhost";
 	$username = "suit_id";

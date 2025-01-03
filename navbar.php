@@ -20,17 +20,13 @@
                     value="<?php echo isset($_GET['kategori']) ? $_GET['kategori'] : ''; ?>">
             </form>
         </div>
+
+        
         <a href="<?= isset($_SESSION['username']) ? 'keluar.php' : 'login-u.php' ?>"
             class="btn btn-sm btn-<?= isset($_SESSION['username']) ? 'danger' : 'success' ?>">
             <?= isset($_SESSION['username']) ? 'Logout' : 'Login' ?>
         </a>
         <a href="register.php"><i class="user-icon">👤</i></a>
-        <a href="checkout.php" class="cart-container">
-            <i class="cart-icon">🛒</i>
-            <span class="cart-badge">
-                <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
-            </span>
-        </a>
     </div>
 </nav>
 
@@ -132,6 +128,7 @@
             gap: 5px;
         }
     }
+    
 </style>
 
 <script>
