@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../db.php';
-if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
-        echo '<script>window.location="login.php"</script>';
-    }
 
     $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id = '".$_GET['id']."' ");
     if(mysqli_num_rows($produk) == 0){

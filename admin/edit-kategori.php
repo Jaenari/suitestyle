@@ -1,10 +1,7 @@
 <?php
 session_start();
 include '../db.php';
-if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
-    echo '<script>window.location="login.php"</script>';
-    exit;
-}
+
 
 $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori WHERE kategori_id = '".$_GET['id']."' ");
 if (mysqli_num_rows($kategori) == 0) {

@@ -1,12 +1,16 @@
 <?php
 session_start();
 include '../db.php';
-if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
-        echo '<script>window.location="login.php"</script>';
-    }
 
-    $query = mysqli_query($conn, "SELECT * FROM tb_admin WHERE admin_id = '".$_SESSION['id']."' ");
-    $d = mysqli_fetch_object($query);
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['id'])) {
+    // Redirect ke halaman login jika belum login
+    header("Location: ../login-u.php");
+    exit;
+}
+// Ambil data pengguna dari `tb_users` berdasarkan session ID
+$query = mysqli_query($conn, "SELECT * FROM tb_users WHERE id = '".$_SESSION['id']."' ");
+$d = mysqli_fetch_object($query);
 ?>
 
 <!DOCTYPE html>
@@ -36,34 +40,25 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
             <h3>Profil</h3>
             <div class="box">
                 <form action="" method="POST">
-                    <input type="text" name="nama" placeholder="Nama Lengkap" class="input-control" value="<?php echo $d->admin_name ?>" required>
-                    <input type="text" name="user" placeholder="Username" class="input-control" value="<?php echo $d->username ?>" required>
-                    <input type="text" name="hp" placeholder="No HP" class="input-control" value="<?php echo $d->admin_telp ?>" required>
-                    <input type="email" name="email" placeholder="Email" class="input-control" value="<?php echo $d->admin_email?>" required>
-                    <input type="text" name="alamat" placeholder="Alamat" class="input-control" value="<?php echo $d->admin_address ?>" required>
+                    <input type="text" name="nama" placeholder="Nama Lengkap" class="input-control" value="<?php echo $d->nama ?>" required>
+                    <input type="email" name="email" placeholder="Email" class="input-control" value="<?php echo $d->email ?>" required>
                     <input type="submit" name="submit" value="Ubah Profil" class="btn">
                 </form>
                 <?php
                     if(isset($_POST['submit'])){
 
                         $nama   = ucwords($_POST['nama']);
-                        $user   = $_POST['user'];
-                        $hp     = $_POST['hp'];
                         $email  = $_POST['email'];
-                        $alamat = ucwords($_POST['alamat']);
 
-                        $update = mysqli_query($conn, "UPDATE tb_admin SET 
-                                        admin_name = '".$nama."',
-                                        username = '".$user."',
-                                        admin_telp = '".$hp."',
-                                        admin_email = '".$email."',
-                                        admin_address = '".$alamat."'
-                                        WHERE admin_id = '".$d->admin_id."' ");
+                        $update = mysqli_query($conn, "UPDATE tb_users SET 
+                                        nama = '".$nama."',
+                                        email = '".$email."'
+                                        WHERE id = '".$d->id."' ");
                         if($update){
                             echo '<script>alert("Ubah data berhasil")</script>';
                             echo '<script>window.location="profil.php"</script>';
                         }else{
-                            echo 'gagal ' .mysqli_error($conn);
+                            echo 'Gagal ' .mysqli_error($conn);
                         }
                     }
                 ?>
@@ -86,14 +81,14 @@ if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] != true) {
                             echo "<script>alert('Konfirmasi Password Baru tidak sesuai')</script>";
                         }else{
 
-                            $u_pass = mysqli_query($conn, "UPDATE tb_admin SET 
+                            $u_pass = mysqli_query($conn, "UPDATE tb_users SET 
                                         password = '".md5($pass1)."'
-                                        WHERE admin_id = '".$d->admin_id."' ");
+                                        WHERE id = '".$d->id."' ");
                             if($u_pass) {
-                                 echo '<script>alert("Ubah data berhasil")</script>';
+                                 echo '<script>alert("Ubah password berhasil")</script>';
                                  echo '<script>window.location="profil.php"</script>';
                             }else{
-                                  echo 'gagal ' .mysqli_error($conn);
+                                  echo 'Gagal ' .mysqli_error($conn);
                             }
                         }
                     }
