@@ -1,17 +1,19 @@
 <?php
 include_once 'db.php';
 // Tangkap parameter 'produk_id' dari URL
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    echo "<script>alert('Produk ID tidak ditemukan!'); window.location='produk.php';</script>";
-    exit;
-}
-$produk_id = $_GET['id'];
+// if (!isset($_GET['id']) || empty($_GET['id'])) {
+//     echo "<script>alert('Produk ID tidak ditemukan!'); window.location='produk.php';</script>";
+//     exit;
+// }
+// $produk_id = $_GET['id'];
 
-$produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id=$produk_id ORDER BY produk_id DESC");
+// $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id=$produk_id ORDER BY produk_id DESC");
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +23,7 @@ $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id=$produk_i
         body {
             background-color: #ffe6f0;
         }
+
         .login-container {
             max-width: 400px;
             margin: 50px auto;
@@ -31,6 +34,7 @@ $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id=$produk_i
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h3 class="text-center mb-4">Login</h3>
@@ -43,9 +47,12 @@ $produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE produk_id=$produk_i
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <input type="hidden" name="produk_id" value="<?php echo htmlspecialchars($produk_id); ?>">
+            <?php if (isset($_GET['id'])): ?>
+                <input type="hidden" name="produk_id" value="<?php echo htmlspecialchars($_GET['id']); ?>">
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
     </div>
 </body>
+
 </html>

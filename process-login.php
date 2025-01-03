@@ -1,16 +1,15 @@
 <?php
 session_start();
 include 'db.php'; // Pastikan file ini berisi koneksi ke database Anda
-$produk = mysqli_query($conn, "SELECT * FROM tb_produk WHERE $where ORDER BY produk_id DESC");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Periksa apakah data POST tersedia
-    if (empty($_POST['produk_id']) || empty($_POST['email']) || empty($_POST['password'])) {
+    if (empty($_POST['email']) || empty($_POST['password'])) {
         echo "<script>alert('Semua data harus diisi!'); window.location='produk.php';</script>";
         exit;
     }
 
-    $produk_id = $_POST['produk_id'];
+    $produk_id = $_POST['produk_id'] ?? null;
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -29,9 +28,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['nama'];
+            $_SESSION['user_role'] = $user['role'];
 
-            // Redirect ke halaman detail produk
-            header("Location: detail-produk.php?id=" . urlencode($produk_id));
+            if ($user['role'] === 'admin') {
+                header("Location: admin/dashboard.php");
+                exit;
+
+            }
+
+            if ($produk_id) {
+                header("Location: detail-produk.php?id=" . urlencode($produk_id));
+                exit;
+            }
+
+            header("Location: index.php?");
             exit;
         } else {
             // Password salah
