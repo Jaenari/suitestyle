@@ -88,21 +88,20 @@
 
 </style>
 
-<footer class="footer">
+<footer class="footer ">
     <div class="container">
         <div class="row">
             <!-- Kolom 1 -->
             <div class="col-md-4 text-center">
                 <h5>The Sale Store</h5>
                 <p>Daftarkan dirimu untuk mendapatkan informasi terbaru tentang produk kami!</p>
-                <a href="#" class="text-white">Klik Disini</a>
+                <a href="register.php" class="text-white">Klik Disini</a>
             </div>
             <!-- Kolom 2 -->
             <div class="col-md-4 text-center">
                 <h5>Informasi dan Bantuan</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Rating Toko</a></li>
-                    <li><a href="#" class="text-white">Tentang Kami</a></li>
+                    <li><a href="contact.php" class="text-white">Tentang Kami</a></li>
                 </ul>
             </div>
             <!-- Kolom 3 -->

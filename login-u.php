@@ -51,6 +51,7 @@ include_once 'db.php';
                 <input type="hidden" name="produk_id" value="<?php echo htmlspecialchars($_GET['id']); ?>">
             <?php endif; ?>
             <button type="submit" class="btn btn-primary w-100">Login</button>
+            <a href="index.php" class="btn btn-primary w-100 mt-3">Kembali</a>
         </form>
     </div>
 </body>

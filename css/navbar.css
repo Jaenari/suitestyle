@@ -28,6 +28,7 @@ body {
 
 .nav-links li {
     display: inline;
+    text-decoration-color: #f4c2c2;
 }
 
 .nav-links a {

@@ -36,6 +36,7 @@
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Register</button>
+            <a href="index.php" class="btn btn-primary w-100 mt-3">Kembali</a>
         </form>
     </div>
 </body>

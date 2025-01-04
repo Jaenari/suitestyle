@@ -47,6 +47,7 @@ $a = mysqli_fetch_object($kontak);
             padding-top: 70px; /* Adjust for fixed navbar height */
         }
     </style>
+    
 </head>
 
 <body>

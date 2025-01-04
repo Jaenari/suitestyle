@@ -8,7 +8,7 @@
     <ul class="nav-links" id="nav-menu">
         <li><a href="home.php">Home</a></li>
         <li><a href="kategori.php">Category</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="contact.php">About Us</a></li>
     </ul>
     <div class="nav-icons">
         <div class="search-container">
@@ -26,18 +26,28 @@
             class="btn btn-sm btn-<?= isset($_SESSION['username']) ? 'danger' : 'success' ?>">
             <?= isset($_SESSION['username']) ? 'Logout' : 'Login' ?>
         </a>
-        <a href="register.php"><i class="user-icon">👤</i></a>
+        <a href="register.php"> <span class="btn btn-pink">Register</span></a>
     </div>
 </nav>
 
 <style>
     /* Basic Styles */
     .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f4c2c2; /* Soft pink */
+    padding: 10px 20px;
+}
+
+    .btn-pink{
+    background-color: #f4c2c2; /* Soft pink */
     }
+
+.nav-menu{
+    text-decoration-color: #f4c2c2 ;
+}
+
 
     .nav-links {
         display: flex;
@@ -48,11 +58,12 @@
 
     .nav-links li {
         margin: 0 10px;
+        text-decoration-color:  #f4c2c2;
     }
 
     .nav-links a {
         text-decoration: none;
-        color: #000;
+        color: #e75480;
     }
 
     .nav-icons {
@@ -116,7 +127,7 @@
             right: 20px;
             width: 200px;
             border: 1px solid #ddd;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 6px rgba(224, 216, 216, 0.73);
             z-index: 1000;
         }
 
