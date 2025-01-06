@@ -4,7 +4,7 @@
 
 <style>
     .footer {
-    background-color: #f8d4e0; /* Warna latar belakang footer */
+    background-color: #FB9EC6; /* Warna latar belakang footer */
     color: #fff; /* Warna teks */
     padding: 2rem 0; /* Padding atas dan bawah */
     font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@
 }
 
 .footer a {
-    color: #fff;
+    color: fff#;
     text-decoration: none;
 }
 
@@ -46,6 +46,11 @@
 
 .footer .text-center {
     text-align: center;
+    color: #eb478c;
+}
+
+.text-pink{
+    color: #eb478c;
 }
 
 .footer .row {
@@ -95,13 +100,13 @@
             <div class="col-md-4 text-center">
                 <h5>The Sale Store</h5>
                 <p>Daftarkan dirimu untuk mendapatkan informasi terbaru tentang produk kami!</p>
-                <a href="register.php" class="text-white">Klik Disini</a>
+                <a href="register.php" class="text-pink">Klik Disini</a>
             </div>
             <!-- Kolom 2 -->
             <div class="col-md-4 text-center">
                 <h5>Informasi dan Bantuan</h5>
                 <ul class="list-unstyled">
-                    <li><a href="contact.php" class="text-white">Tentang Kami</a></li>
+                    <li><a href="contact.php" class="text-pink">Tentang Kami</a></li>
                 </ul>
             </div>
             <!-- Kolom 3 -->
@@ -111,7 +116,7 @@
             </div>
         </div>
         <div class="text-center mt-3">
-            <small>&copy; <?php echo date("Y"); ?> Suitestyle</small>
+            <small class="text-pink">&copy; <?php echo date("Y"); ?> Suitestyle</small>
         </div>
     </div>
 </footer>

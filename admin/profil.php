@@ -1,15 +1,8 @@
 <?php
-session_start();
 include '../db.php';
 
-// Periksa apakah pengguna sudah login
-if (!isset($_SESSION['id'])) {
-    // Redirect ke halaman login jika belum login
-    header("Location: ../login-u.php");
-    exit;
-}
-// Ambil data pengguna dari `tb_users` berdasarkan session ID
-$query = mysqli_query($conn, "SELECT * FROM tb_users WHERE id = '".$_SESSION['id']."' ");
+// Ambil data pengguna dengan role admin dari tabel `tb_users`
+$query = mysqli_query($conn, "SELECT * FROM tb_users WHERE role = 'admin'");
 $d = mysqli_fetch_object($query);
 ?>
 
@@ -31,7 +24,7 @@ $d = mysqli_fetch_object($query);
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="data-kategori.php">Data Kategori</a></li>
                 <li><a href="data-produk.php">Data Produk</a></li>
-                <li><a href="keluar.php">Keluar</a></li>
+                <li><a href="../index.php">Keluar</a></li>
             </ul>
         </div>
     </header>
@@ -45,8 +38,7 @@ $d = mysqli_fetch_object($query);
                     <input type="submit" name="submit" value="Ubah Profil" class="btn">
                 </form>
                 <?php
-                    if(isset($_POST['submit'])){
-
+                    if (isset($_POST['submit'])) {
                         $nama   = ucwords($_POST['nama']);
                         $email  = $_POST['email'];
 
@@ -54,11 +46,11 @@ $d = mysqli_fetch_object($query);
                                         nama = '".$nama."',
                                         email = '".$email."'
                                         WHERE id = '".$d->id."' ");
-                        if($update){
+                        if ($update) {
                             echo '<script>alert("Ubah data berhasil")</script>';
                             echo '<script>window.location="profil.php"</script>';
-                        }else{
-                            echo 'Gagal ' .mysqli_error($conn);
+                        } else {
+                            echo 'Gagal ' . mysqli_error($conn);
                         }
                     }
                 ?>
@@ -72,23 +64,21 @@ $d = mysqli_fetch_object($query);
                     <input type="submit" name="ubah_password" value="Ubah Password" class="btn">
                 </form>
                 <?php
-                    if(isset($_POST['ubah_password'])){
-
+                    if (isset($_POST['ubah_password'])) {
                         $pass1   = $_POST['pass1'];
                         $pass2   = $_POST['pass2'];
 
-                        if($pass2 != $pass1){
+                        if ($pass2 !== $pass1) {
                             echo "<script>alert('Konfirmasi Password Baru tidak sesuai')</script>";
-                        }else{
-
+                        } else {
                             $u_pass = mysqli_query($conn, "UPDATE tb_users SET 
                                         password = '".md5($pass1)."'
                                         WHERE id = '".$d->id."' ");
-                            if($u_pass) {
-                                 echo '<script>alert("Ubah password berhasil")</script>';
-                                 echo '<script>window.location="profil.php"</script>';
-                            }else{
-                                  echo 'Gagal ' .mysqli_error($conn);
+                            if ($u_pass) {
+                                echo '<script>alert("Ubah password berhasil")</script>';
+                                echo '<script>window.location="profil.php"</script>';
+                            } else {
+                                echo 'Gagal ' . mysqli_error($conn);
                             }
                         }
                     }

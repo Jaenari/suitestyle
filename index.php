@@ -21,13 +21,14 @@ $a = mysqli_fetch_object($kontak);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Suitestyle</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/navbar.css"> -->
     <link rel="stylesheet" type="text/css" href="css/cards.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
         #carouselExample {
@@ -43,9 +44,13 @@ $a = mysqli_fetch_object($kontak);
             width: 100%;
         }
 
+
+    </style>
+     <style>
         body {
-            padding-top: 70px; /* Adjust for fixed navbar height */
+            background-color: #ffe6f0;
         }
+
     </style>
     
 </head>

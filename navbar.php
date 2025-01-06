@@ -1,150 +1,100 @@
-<nav class="navbar fixed-top align-items-center">
-    <div class="logo">
-        <img src="img/Loading.png" alt="Logo" class="logo-img">
-    </div>
-    <button class="navbar-toggler" type="button" id="nav-toggle">
-        ☰
-    </button>
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="home.php">Home</a></li>
-        <li><a href="kategori.php">Category</a></li>
-        <li><a href="contact.php">About Us</a></li>
-    </ul>
-    <div class="nav-icons">
-        <div class="search-container">
-            <form action="produk.php" method="GET">
-                <i class="search-icon" id="search-toggle">🔍</i>
-                <input type="text" class="search-input" name="search" placeholder="Search..."
-                    value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                <input type="hidden" name="kategori"
-                    value="<?php echo isset($_GET['kategori']) ? $_GET['kategori'] : ''; ?>">
-            </form>
-        </div>
-
-        
-        <a href="<?= isset($_SESSION['username']) ? 'keluar.php' : 'login-u.php' ?>"
-            class="btn btn-sm btn-<?= isset($_SESSION['username']) ? 'danger' : 'success' ?>">
-            <?= isset($_SESSION['username']) ? 'Logout' : 'Login' ?>
-        </a>
-        <a href="register.php"> <span class="btn btn-pink">Register</span></a>
-    </div>
-</nav>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 
 <style>
-    /* Basic Styles */
-    .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f4c2c2; /* Soft pink */
-    padding: 10px 20px;
-}
-
-    .btn-pink{
-    background-color: #f4c2c2; /* Soft pink */
-    }
-
-.nav-menu{
-    text-decoration-color: #f4c2c2 ;
-}
-
-
-    .nav-links {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-links li {
-        margin: 0 10px;
-        text-decoration-color:  #f4c2c2;
-    }
-
-    .nav-links a {
-        text-decoration: none;
-        color: #e75480;
-    }
-
-    .nav-icons {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
     .search-container {
+        position: relative;
         display: flex;
         align-items: center;
     }
 
     .search-input {
-        display: none;
-        /* Hidden initially */
-        margin-left: 10px;
-        padding: 5px;
+        width: 0;
+        opacity: 0;
+        padding: 5px 10px;
+        border: 1px solid #6e5656;
+        border-radius: 20px;
+        outline: none;
+        background-color: #cb7070;
+        transition: width 0.3s ease, opacity 0.3s ease;
+        font-size: 16px;
     }
 
-    /* Cart Badge */
-    .cart-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .cart-badge {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background-color: red;
-        color: white;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 2px 6px;
-        border-radius: 50%;
-        display: inline-block;
-        min-width: 20px;
-        text-align: center;
-    }
-
-    /* Responsive Styles */
-    .navbar-toggler {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
+    .search-icon {
         cursor: pointer;
+        font-size: 18px;
+        margin-right: 5px;
+        transition: color 0.3s ease;
     }
 
-    @media screen and (max-width: 576px) {
-        .navbar-toggler {
-            display: block;
-        }
-
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            width: 200px;
-            border: 1px solid #ddd;
-            box-shadow: 0px 4px 6px rgba(224, 216, 216, 0.73);
-            z-index: 1000;
-        }
-
-        .nav-links.show {
-            display: flex;
-        }
-
-        .nav-icons {
-            gap: 5px;
-        }
+    /* When the search-icon is hovered, show the input */
+    .search-icon:hover+.search-input,
+    .search-container:hover .search-input {
+        width: 200px;
+        opacity: 1;
     }
-    
+
+    .nav-link {
+        color: #e75480 !important;
+    }
+
+    .search-icon:hover {
+        color: #e75480;
+    }
 </style>
 
-<script>
-    document.getElementById('nav-toggle').addEventListener('click', function () {
-        const navMenu = document.getElementById('nav-menu');
-        navMenu.classList.toggle('show');
-    });
-</script>
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color:#FB9EC6">
+    <div class="container-fluid">
+        <img src="img/Loading.png" alt="Logo" class="navbar-brand" width="64" height="48">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0 fw-bold">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kategori.php">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-disabled="true" href="produk.php">Show All</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-disabled="true" href="contact.php">About Us</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <!-- Search Container -->
+                <div class="search-container">
+                    <form action="produk.php" method="GET" class="d-flex align-items-center">
+                        <i class="search-icon" id="search-toggle">🔍</i>
+                        <input type="text" class="search-input" name="search" placeholder="Search...">
+                    </form>
+                </div>
+
+                <!-- Logic for Login/Logout -->
+                <?php if (isset($_SESSION['username'])): ?>
+                    <!-- Logout Button -->
+                    <a href="keluar.php" class="btn btn-sm btn-danger w-auto">
+                        <i class="bi bi-person-circle me-1"></i>Logout
+                    </a>
+                <?php else: ?>
+                    <!-- Login Button -->
+                    <a href="login-u.php" class="me-1 btn btn-sm btn-success w-auto">
+                        <i class="bi bi-person-circle me-1"></i>Login
+                    </a>
+                    <!-- Register Button -->
+                    <a href="register.php" class="btn btn-sm btn-primary w-auto">
+                        <i class="bi bi-person-add me-1"></i>Daftar
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</nav>
