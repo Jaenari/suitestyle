@@ -28,10 +28,11 @@ include 'db.php';
             <div class="card my-5">
                 <div class="card-body">
                     <p><strong>Nama:</strong> Suitstyle</p>
-                    <p><strong>Email:</strong> sriwar89137981@gmail.com</p>
-                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/081256298148">+62 123 456 7890</a></p>
-                    <p><strong>Instagram:</strong> <a href="https://instagram.com/suitstyke">@suitstyle</a></p>
-                    <p><strong>TikTok:</strong> <a href="https://tiktok.com/@johndoe">@suitstyle</a></p>
+                    <p><strong>Email:</strong> yuliandadea123@gmail.com</p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/+6287827773418">+62 878 2777 3418</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/thesalestore.bdj">@thesalestore.bdj</a></p>
+                    <p><strong>TikTok:</strong> <a href="https://tiktok.com/@thesalestore.bdj">@thesalestore.bdj</a></p>
+                    <p><strong>Shopee:</strong> <a href="https://shopee.com/@Thesalestore.bjm_">@Thesalestore.bjm_</a></p>
                     <p><strong>Alamat:</strong> Jl. Cemara Raya Banjarmasin</p>
                 </div>
             </div>
