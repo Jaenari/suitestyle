@@ -32,6 +32,17 @@ include_once 'db.php';
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+        .btn-primary {
+        background-color: #ff80bf; 
+        border-color: #ff66b2;
+        color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff66b2; 
+            border-color: #ff4da6; 
+            color: #000;
+        }
     </style>
 </head>
 

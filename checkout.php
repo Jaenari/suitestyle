@@ -39,6 +39,42 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
     <title>Checkout</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #ffe6f0; 
+            color: #333; 
+        }
+
+        .card {
+            background-color: #ffcce0;
+            border: none;
+        }
+
+        .btn-success {
+            background-color: #ff99cc; 
+            border-color: #ff80bf;
+        }
+
+        .btn-success:hover {
+            background-color: #ff80bf; 
+            border-color: #ff66b2;
+        }
+
+        .btn-primary {
+            background-color: #ff80bf; 
+            border-color: #ff66b2;
+        }
+
+        .btn-secondary {
+            background-color: #ffcce0; 
+            border-color: #ff99cc;
+        }
+
+        .alert-info {
+            background-color: #ffd9e6; 
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
