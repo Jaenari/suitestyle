@@ -39,7 +39,6 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
     <title>Checkout</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <input type="submit" value="Kirim ke WhatsApp" class="btn btn-whatsapp">
     <style>
         body {
             background-color: #ffe6f0; 
@@ -74,16 +73,6 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         .alert-info {
             background-color: #ffd9e6; 
             color: #333;
-        }
-        .btn-whatsapp {
-        background-color: #ffcce0; /* Warna pink muda */
-        color: #333; /* Warna teks */
-        border-color: #ff99cc; /* Border */
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #ff80bf; /* Warna saat hover */
-            border-color: #ff66b2;
         }
     </style>
 </head>
@@ -143,40 +132,40 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
 
 <script>
     function redirectToWhatsApp(event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    // Ambil nilai dari input alamat
-    const address = document.getElementById('address').value;
+        // Ambil nilai dari input alamat
+        const address = document.getElementById('address').value;
 
-    // Data dinamis untuk produk dan nomor telepon
-    const adminTelp = "<?php echo htmlspecialchars($admin_telp); ?>";
-    const produkNama = "<?php echo htmlspecialchars($produk['produk_nama']); ?>";
-    const harga = "<?php echo number_format($produk['produk_price']); ?>";
-    const deskripsi = `<?php echo nl2br(htmlspecialchars($produk['produk_deskripsi'])); ?>`;
+        // Data dinamis untuk produk dan nomor telepon
+        const adminTelp = "<?php echo htmlspecialchars($admin_telp); ?>";
+        const produkNama = "<?php echo htmlspecialchars($produk['produk_nama']); ?>";
+        const harga = "<?php echo htmlspecialchars($produk['produk_price']); ?>";
+        const deskripsi = "<?php echo htmlspecialchars($produk['produk_deskripsi']); ?>";
 
-    // Buat pesan WhatsApp dengan format rapi
-            const message = `
+
+        // Encode pesan agar sesuai dengan format URL
+        const message = `
         Hai, saya ingin membeli produk berikut:
-        - **Nama Produk:** ${produkNama}
-        - **Harga:** Rp. ${harga}
-        - **Deskripsi:** 
+
+        - **Nama Produk**: ${produkNama}
+        - **Harga**: Rp. ${harga}
+        - **Deskripsi**: 
         ${deskripsi}
 
-        Mohon dikirim ke alamat saya:
+        Mohon dikirim ke alamat berikut:
         ${address}
 
         Terima kasih!
-            `.trim();
+        `.trim();
 
-            // Encode pesan agar sesuai dengan format URL
-            const encodedMessage = encodeURIComponent(message);
+        const encodedMessage = encodeURIComponent(message);
 
-            // Redirect ke WhatsApp
-            const whatsappURL = `https://api.whatsapp.com/send?phone=${adminTelp}&text=${encodedMessage}`;
-            window.location.href = whatsappURL;
-        }
 
-    
+        // Redirect ke WhatsApp
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${adminTelp}&text=${encodedMessage}`;
+        window.location.href = whatsappURL;
+    }
 </script>
 
 </html>
