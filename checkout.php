@@ -148,9 +148,9 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         const message = `
         Hai, saya ingin membeli produk berikut:
 
-        - *Nama Produk*: ${produkNama}
-        - *Harga*: Rp. ${harga}
-        - *Deskripsi*: 
+        - Nama Produk: ${produkNama}
+        - Harga: Rp. ${harga}
+        - Deskripsi: 
         ${deskripsi}
 
         Mohon dikirim ke alamat berikut:
@@ -160,6 +160,7 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         `.trim();
 
         const encodedMessage = encodeURIComponent(message);
+
 
 
         // Redirect ke WhatsApp
