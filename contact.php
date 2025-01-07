@@ -32,7 +32,7 @@ include 'db.php';
                     <p><strong>WhatsApp:</strong> <a href="https://wa.me/+6287827773418">+62 878 2777 3418</a></p>
                     <p><strong>Instagram:</strong> <a href="https://instagram.com/thesalestore.bdj">@thesalestore.bdj</a></p>
                     <p><strong>TikTok:</strong> <a href="https://tiktok.com/@thesalestore.bdj">@thesalestore.bdj</a></p>
-                    <p><strong>Shopee:</strong> <a href="https://shopee.com/@Thesalestore.bjm_">@Thesalestore.bjm_</a></p>
+                    <p><strong>Shopee</strong><a href="https://shopee.co.id/Thesalestore.bjm_">@Thesalestore.bjm_</a>
                     <p><strong>Alamat:</strong> Jl. Cemara Raya Banjarmasin</p>
                 </div>
             </div>
