@@ -145,10 +145,18 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
 
 
         // Encode pesan agar sesuai dengan format URL
-        const message = `Hai, saya ingin membeli produk ${produkNama}. \n
-                         ${deskripsi} \n
-                         Dengan Harga Rp. ${harga}. \n
-                         Mohon dikirim ke Alamat saya: ${address}`;
+        const message = `
+        Hai, saya ingin membeli produk berikut:
+        - **Nama Produk:** ${produkNama}
+        - **Harga:** Rp. ${harga}
+        - **Deskripsi:** 
+        ${deskripsi}
+
+        Mohon dikirim ke alamat saya:
+        ${address}
+
+        Terima kasih!
+            `.trim();
         const encodedMessage = encodeURIComponent(message);
 
         // Redirect ke WhatsApp
