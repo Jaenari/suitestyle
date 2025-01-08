@@ -132,22 +132,22 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
 
 <script>
     function redirectToWhatsApp(event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    // Ambil nilai dari input alamat
-    const address = document.getElementById('address').value;
+        // Ambil nilai dari input alamat
+        const address = document.getElementById('address').value;
+
+        // Data dinamis untuk produk dan nomor telepon
+        const adminTelp = "<?php echo htmlspecialchars($admin_telp); ?>";
+        const produkNama = "<?php echo htmlspecialchars($produk['produk_nama']); ?>";
+        const harga = "<?php echo htmlspecialchars($produk['produk_price']); ?>";
+        const deskripsi = "<?php echo htmlspecialchars($produk['produk_deskripsi']); ?>";
 
 
-    const adminTelp = "<?php echo htmlspecialchars($admin_telp); ?>";
-    const produkNama = "<?php echo htmlspecialchars($produk['produk_nama']); ?>";
-    const harga = "<?php echo htmlspecialchars($produk['produk_price']); ?>";
-    const deskripsi = "<?php echo htmlspecialchars($produk['produk_deskripsi']); ?>";
-
-
-    // Encode pesan agar sesuai dengan format URL
-    const message = `
+        // Encode pesan agar sesuai dengan format URL
+        const message = `
         Hai, saya ingin membeli produk berikut:
-        
+
         - Nama Produk: ${produkNama}
         - Harga: Rp. ${harga}
         - Deskripsi: 
@@ -159,15 +159,15 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         Terima kasih!
         `.trim();
 
-    const encodedMessage = encodeURIComponent(message);
+        const encodedMessage = encodeURIComponent(message);
 
 
 
-    // Redirect ke WhatsApp
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${adminTelp}&text=${encodedMessage}`;
-    window.location.href = whatsappURL;
-}
-
+        // Redirect ke WhatsApp
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${adminTelp}&text=${encodedMessage}`;
+        window.location.href = whatsappURL;
+    }
+    
 </script>
 
 </html>
