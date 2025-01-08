@@ -148,11 +148,11 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         const message = `
         Hai, saya ingin membeli produk berikut:
 
-        - Nama Produk: ${produkNama}
-        - Harga: Rp. ${harga}
-        - Deskripsi: 
+        - *Nama Produk*: ${produkNama}
+        - *Harga*: Rp. ${harga}
+        - *Deskripsi*: 
         ${deskripsi}
-
+        
         Mohon dikirim ke alamat berikut:
         ${address}
 
@@ -167,7 +167,7 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         const whatsappURL = `https://api.whatsapp.com/send?phone=${adminTelp}&text=${encodedMessage}`;
         window.location.href = whatsappURL;
     }
-    
+
 </script>
 
 </html>
