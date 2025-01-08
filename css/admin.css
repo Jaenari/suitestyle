@@ -35,12 +35,36 @@ a {
 	box-sizing: border-box;
 }
 .btn {
-	padding: 8px 15px;
+	
 	background-color: #eb478c;
-	color: #fff;
-	border: none;
-	cursor: pointer;
+	display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
 }
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-edit {
+    background-color: #28a745;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-hapus {
+    background-color: #dc3545;
+}
+
+.btn-hapus:hover {
+    background-color: #c82333;
+}
+
 header {
 	background-color: #eda3cd;
 	color: #000000;
@@ -86,15 +110,36 @@ footer {
 	display: block;
 	clear: both;
 }
-.table {
-	width: 100%;
-	border-collapse: collapse;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: left;
 }
-.table tr {
-	height: 30px;
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
 }
-.table tr td {
-	padding:5px 10px;
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table img {
+    max-width: 100px;
+    border-radius: 5px;
 }
 .search {
 	padding:15px 0;

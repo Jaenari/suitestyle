@@ -23,6 +23,12 @@ $a = mysqli_fetch_object($kontak);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+    <style>
+        .h3{
+            color: #FF66A3;
+            font-weight: bold;
+        }
+    </style>
 
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
@@ -67,7 +73,7 @@ $a = mysqli_fetch_object($kontak);
     <!-- Daftar Produk -->
     <div class="section">
         <div class="container">
-            <h3>Produk</h3>
+            <h3 class="text-center h3">Produk</h3>
             <div class="product-grid">
                 <?php
                 $where = "1";

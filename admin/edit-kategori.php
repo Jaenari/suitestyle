@@ -20,6 +20,13 @@ $k = mysqli_fetch_object($kategori);
     <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+            background-color: #ffe6f0;
+        }
+</style>
+
 <body>
     <header>
         <div class="container">

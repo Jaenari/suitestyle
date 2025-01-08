@@ -17,11 +17,16 @@ if (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin') {
     <link rel="stylesheet" type="text/css" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
+<style>
+    body {
+            background-color: #ffe6f0;
+        }
+</style>
 
 <body>
     <header>
         <div class="container">
-            <h1><a href="dashboard.php">Suitstyle</a></h1>
+            <h1><a href="dashboard.php">Suitestyle</a></h1>
             <ul>
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="profil.php">Profil</a></li>
@@ -35,7 +40,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin') {
         <div class="container">
             <h3>Dashboard</h3>
             <div class="box">
-                <h4>Selamat Datang, <?= $_SESSION['username'] ?> Di Admin Suitstyle</h4>
+                <h4>Selamat Datang, <?= $_SESSION['username'] ?> Suitestyle</h4>
             </div>
         </div>
     </div>

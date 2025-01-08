@@ -32,7 +32,7 @@ $a = mysqli_fetch_object($kontak);
 
     <style>
         #carouselExample {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             border-radius: 10px;
             overflow: hidden;
@@ -43,13 +43,13 @@ $a = mysqli_fetch_object($kontak);
             height: 500px;
             width: 100%;
         }
-
-
-    </style>
-     <style>
+        
+        
+        
         body {
             background-color: #ffe6f0;
         }
+        
 
     </style>
     
@@ -63,13 +63,19 @@ $a = mysqli_fetch_object($kontak);
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/c5.jpeg" class="d-block w-100" alt="Slide 1">
+                    <img src="img/1.jpg" class="d-block w-100" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/c4.jpeg" class="d-block w-100" alt="Slide 2">
+                    <img src="img/2.jpg" class="d-block w-100" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/c6.jpeg" class="d-block w-100" alt="Slide 3">
+                    <img src="img/3.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/3.jpg" class="d-block w-100" alt="Slide 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/3.jpg" class="d-block w-100" alt="Slide 5">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -90,11 +96,17 @@ $a = mysqli_fetch_object($kontak);
             document.body.style.paddingTop = navbarHeight + "px";
         });
     </script>
+    <style>
+        .h3{
+            color: #FF66A3;
+            font-weight: bold;
+        }
+    </style>
 
     <!-- New Product Section -->
     <div class="section">
         <div class="container">
-            <h3 class="text-center">Produk Terbaru</h3>
+            <h3 class="text-center h3">Produk Terbaru</h3>
             <div class="product-grid">
                 <?php
                 $produk = mysqli_query($conn, "SELECT * FROM tb_produk ORDER BY produk_id DESC LIMIT 3");
