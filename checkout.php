@@ -24,10 +24,10 @@ if ($result && $result->num_rows > 0) {
     exit;
 }
 
+// Query untuk mengambil data kontak admin
 $kontak = mysqli_query($conn, "SELECT admin_telp, admin_email, admin_address FROM tb_admin WHERE admin_id = 1");
 $a = mysqli_fetch_object($kontak);
-// Nomor telepon admin (gunakan data dari database jika tersedia)
-$admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau konfigurasi
+$admin_telp = $a->admin_telp ?? ''; // Pastikan nomor telepon tidak null
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +41,8 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
-            background-color: #ffe6f0; 
-            color: #333; 
+            background-color: #ffe6f0;
+            color: #333;
         }
 
         .card {
@@ -51,27 +51,27 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         }
 
         .btn-success {
-            background-color: #ff99cc; 
+            background-color: #ff99cc;
             border-color: #ff80bf;
         }
 
         .btn-success:hover {
-            background-color: #ff80bf; 
+            background-color: #ff80bf;
             border-color: #ff66b2;
         }
 
         .btn-primary {
-            background-color: #ff80bf; 
+            background-color: #ff80bf;
             border-color: #ff66b2;
         }
 
         .btn-secondary {
-            background-color: #ffcce0; 
+            background-color: #ffcce0;
             border-color: #ff99cc;
         }
 
         .alert-info {
-            background-color: #ffd9e6; 
+            background-color: #ffd9e6;
             color: #333;
         }
     </style>
@@ -99,7 +99,11 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
                         <p><strong>Nama Produk:</strong> <?php echo htmlspecialchars($produk['produk_nama']); ?></p>
                         <p><strong>Harga:</strong> Rp. <?php echo number_format($produk['produk_price']); ?></p>
                         <p><strong>Deskripsi:</strong>
-                            <?php echo nl2br(htmlspecialchars($produk['produk_deskripsi'])); ?></p>
+                            <?php 
+                            $deskripsi_singkat = substr(htmlspecialchars($produk['produk_deskripsi']), 0, 500); // Batas 500 karakter
+                            echo nl2br($deskripsi_singkat . (strlen($produk['produk_deskripsi']) > 500 ? '...' : '')); 
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -141,7 +145,7 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         const adminTelp = "<?php echo htmlspecialchars($admin_telp); ?>";
         const produkNama = "<?php echo htmlspecialchars($produk['produk_nama']); ?>";
         const harga = "<?php echo htmlspecialchars($produk['produk_price']); ?>";
-        const deskripsi = "<?php echo htmlspecialchars($produk['produk_deskripsi']); ?>";
+        const deskripsi = `<?php echo substr(htmlspecialchars($produk['produk_deskripsi']), 0, 500); ?>`;
 
 
         // Encode pesan agar sesuai dengan format URL
@@ -167,7 +171,7 @@ $admin_telp = $a->admin_telp; // Ganti dengan data aktual dari database atau kon
         const whatsappURL = `https://api.whatsapp.com/send?phone=${adminTelp}&text=${encodedMessage}`;
         window.location.href = whatsappURL;
     }
-
+    
 </script>
 
 </html>
