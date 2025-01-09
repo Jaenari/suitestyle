@@ -72,10 +72,13 @@ $a = mysqli_fetch_object($kontak);
                     <img src="img/3.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/3.jpg" class="d-block w-100" alt="Slide 4">
+                    <img src="img/4.png" class="d-block w-100" alt="Slide 4">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/3.jpg" class="d-block w-100" alt="Slide 5">
+                    <img src="img/5.png" class="d-block w-100" alt="Slide 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/6.png" class="d-block w-100" alt="Slide 6">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
